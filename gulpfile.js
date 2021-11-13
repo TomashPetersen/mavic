@@ -27,7 +27,7 @@ const clean = () => {
 
 //svg sprite
 const svgSprites = () => {
-  return src('./src/img/svg/**.svg')
+  return src('./src/images/svg/**.svg')
     .pipe(svgSprite({
       mode: {
         stack: {
@@ -35,7 +35,7 @@ const svgSprites = () => {
         }
       },
     }))
-    .pipe(dest('./app/img'));
+    .pipe(dest('./app/images'));
 }
 
 const styles = () => {
@@ -48,6 +48,7 @@ const styles = () => {
     .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
     .pipe(gulpif(!isProd, sourcemaps.write('.')))
     .pipe(dest('./app/css/'))
+    .pipe(dest('./src/css/'))
     .pipe(browserSync.stream());
 };
 
@@ -94,16 +95,16 @@ const resources = () => {
 
 const images = () => {
   return src([
-    './src/img/**.jpg',
-    './src/img/**.png',
-    './src/img/**.jpeg',
-    './src/img/*.svg',
-    './src/img/**/*.jpg',
-    './src/img/**/*.png',
-    './src/img/**/*.jpeg'
+    './src/images/**.jpg',
+    './src/images/**.png',
+    './src/images/**.jpeg',
+    './src/images/*.svg',
+    './src/images/**/*.jpg',
+    './src/images/**/*.png',
+    './src/images/**/*.jpeg'
   ])
     .pipe(gulpif(isProd, image()))
-    .pipe(dest('./app/img'))
+    .pipe(dest('./app/images'))
 };
 
 const htmlInclude = () => {
@@ -128,9 +129,9 @@ const watchFiles = () => {
   watch('./src/partials/*.html', htmlInclude);
   watch('./src/*.html', htmlInclude);
   watch('./src/resources/**', resources);
-  watch('./src/img/*.{jpg,jpeg,png,svg}', images);
-  watch('./src/img/**/*.{jpg,jpeg,png}', images);
-  watch('./src/img/svg/**.svg', svgSprites);
+  watch('./src/images/*.{jpg,jpeg,png,svg}', images);
+  watch('./src/images/**/*.{jpg,jpeg,png}', images);
+  watch('./src/images/svg/**.svg', svgSprites);
 }
 
 const cache = () => {

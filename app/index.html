@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mavic</title>
-  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header">
@@ -53,7 +53,7 @@
             КУПИТЬ
           </button>
 
-          <a class="header__phone" href="tel: 805056767 67">
+          <a class="header__phone" href="tel: 80505676767">
             8 (050) 567 67 67
           </a>
         </div>
@@ -96,13 +96,13 @@
     </div>
 
     <div class="scroll-btn">
-      <a href="#">
+      <a href="#product">
         <img src="images/arrow-down.svg" alt="">
       </a>
     </div>   
   </section>
 
-  <section class="page-section product">
+  <section id="product" class="page-section product">
     <div class="container">
       <h3 class="title product__title"></h3>
       <div class="products__inner">
@@ -122,24 +122,24 @@
           </p>
 
           <div class="products__slider">
-            <div class="products__slider-item"><img src="images/slider-1.png" alt="" class="products__slider-img"></div>
-            <div class="products__slider-item"><img src="images/slider-2.png" alt="" class="products__slider-img"></div>
-            <div class="products__slider-item"><img src="images/slider-3.png" alt="" class="products__slider-img"></div>
-            <div class="products__slider-item"><img src="images/slider-4.png" alt="" class="products__slider-img"></div>
-            <div class="products__slider-item"><img src="images/slider-5.png" alt="" class="products__slider-img"></div>
-            <div class="products__slider-item"><img src="images/slider-6.png" alt="" class="products__slider-img"></div>
+            <div class="products__slider-item"><img src="images/slider-1.jpg" alt="" class="products__slider-img"></div>
+            <div class="products__slider-item"><img src="images/slider-1.jpg" alt="" class="products__slider-img"></div>
+            <div class="products__slider-item"><img src="images/slider-1.jpg" alt="" class="products__slider-img"></div>
+            <div class="products__slider-item"><img src="images/slider-1.jpg" alt="" class="products__slider-img"></div>
+            <div class="products__slider-item"><img src="images/slider-1.jpg" alt="" class="products__slider-img"></div>
+            <div class="products__slider-item"><img src="images/slider-1.jpg" alt="" class="products__slider-img"></div>
           </div>
         </div>
       </div>
     </div>
     <div class="scroll-btn">
-      <a href="#">
+      <a href="#benefits">
         <img src="images/arrow-down.svg" alt="">
       </a>
     </div>
   </section>
 
-  <section class="page-section benefits">
+  <section id="benefits" class="page-section benefits">
     <div class="container">
       <h3 class="title">Преимущества</h3>
 
@@ -164,7 +164,7 @@
         <div class="benefits__item">
           <div class="benefits__num">2</div>
           <div class="benefits__img">
-            <img src="images/benefits-1.jpg" alt="">
+            <img src="images/benefits-2.jpg" alt="">
           </div>
           <div class="benefits__info">
             <h4 class="benefits__info-title">
@@ -179,7 +179,7 @@
         <div class="benefits__item">
           <div class="benefits__num">3</div>
           <div class="benefits__img">
-            <img src="images/benefits-1.jpg" alt="">
+            <img src="images/benefits-3.jpg" alt="">
           </div>
           <div class="benefits__info">
             <h4 class="benefits__info-title">
@@ -198,7 +198,7 @@
         <div class="benefits__item">
           <div class="benefits__num">4</div>
           <div class="benefits__img">
-            <img src="images/benefits-1.jpg" alt="">
+            <img src="images/benefits-4.jpg" alt="">
           </div>
           <div class="benefits__info">
             <h4 class="benefits__info-title">
@@ -217,13 +217,13 @@
       </div>
     </div>
     <div class="scroll-btn">
-      <a href="#">
+      <a href="#specification">
         <img src="images/arrow-down.svg" alt="">
       </a>
     </div>
   </section>
 
-  <section class="page-section specification">
+  <section id="specification" class="page-section specification">
     <div class="container">
       <h3 class="title">Характеристики</h3>
     </div>
@@ -262,13 +262,13 @@
       </div>
     </div>
     <div class="scroll-btn">
-      <a href="#">
+      <a href="#questions">
         <img src="images/arrow-down.svg" alt="">
       </a>
     </div>
   </section>
 
-  <section class="page-section questions">
+  <section id="questions" class="page-section questions">
     <div class="container">
       <h3 class="title">
         Остались вопросы?
@@ -298,13 +298,13 @@
       </div>
     </div>
     <div class="scroll-btn">
-      <a href="#">
+      <a href="#contacts">
         <img src="images/arrow-down.svg" alt="">
       </a>
     </div>
   </section>
 
-  <section class="page-section contacts">
+  <section id="contacts" class="page-section contacts">
     <div class="container">
       <h3 class="title">Контакты</h3>
 
@@ -348,27 +348,45 @@
             </p>
 
             <div class="contacts__form-line">
-              <input class="contacts__form-input" placeholder="Введите Имя" type="text">
+              <input class="contacts__form-input" placeholder="Введите Имя" type="email">
               <input class="contacts__form-input" placeholder="Введите Имя" type="text">
             </div>
 
             <textarea class="contacts__form-textarea" placeholder="Что вас интересует?">
             </textarea>
 
-            <button class="contacts__form-btn">ОТПРАВИТЬ</button>
+            <button class="contacts__form-btn" type="submit">ОТПРАВИТЬ</button>
           </form>
         </div>
-        <div class="contacts__item">
-
-        </div>
+        <ul class="contacts__social">
+          <li class="contacts__social-item">
+            <a class="contacts__social-link" href="#">
+              <img src="images/facebook.svg" alt="facebook">
+            </a>
+          </li>
+          <li class="contacts__social-item">
+            <a class="contacts__social-link" href="#">
+              <img src="images/youtube.svg" alt="youtube">
+            </a>
+          </li>
+          <li class="contacts__social-item">
+            <a class="contacts__social-link" href="#">
+              <img src="images/instagram.svg" alt="instagram">
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="scroll-btn">
-      <a href="#">
-        <img src="images/arrow-down.svg" alt="">
-      </a>
-    </div>
+    
   </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__copy">
+        volkovbz, 2021
+      </p>
+    </div>
+  </footer>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="js/libs.min.js"></script>
