@@ -13,7 +13,7 @@ body {
   font-weight: 300;
 }
 
-.header__inner {
+.product__slider-text, .header__inner {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
 }
@@ -577,6 +577,7 @@ body {
   line-height: 53px;
   padding-left: 25px;
   margin-bottom: 55px;
+  padding-top: 200px;
 }
 
 .scroll-btn {
@@ -683,5 +684,34 @@ body {
 }
 .top__social-link:hover {
   opacity: 100%;
+}
+
+.product__inner {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+}
+.product__text {
+  max-width: 440px;
+}
+.product__text p {
+  margin-bottom: 30px;
+}
+.product__slider-text {
+  width: 285px;
+  position: absolute;
+  text-align: right;
+  font-size: 24px;
+  line-height: 28px;
+  bottom: 30px;
+  left: -250px;
+  z-index: 5;
+}
+.product__slider-box {
+  position: relative;
+  padding-top: 100px;
+}
+.product__slider {
+  max-width: 560px;
 }
 /*# sourceMappingURL=style.css.map */
