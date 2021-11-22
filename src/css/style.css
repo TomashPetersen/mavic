@@ -1,3 +1,28 @@
+.title {
+  font-family: "SFProDisplay-Regular", sans-serif;
+  font-weight: 400;
+}
+
+.top__title {
+  font-family: "SFProDisplay-Semibold", sans-serif;
+  font-weight: 600;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
+
+.header__inner {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+}
+
+.header__phone {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -487,6 +512,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+a:hover {
+  cursor: pointer;
+}
 
 ul,
 li {
@@ -510,22 +538,45 @@ body {
   overflow-x: hidden;
   position: relative;
   color: #fff;
+  font-size: 17px;
+  line-height: 25px;
 }
 
 .container {
-  max-width: 1270;
+  max-width: 1270px;
   padding: 0 15px;
   margin: 0 auto;
 }
 
 .page-section {
-  min-height: 100vh;
   background-image: url(../images/page-bg.jpg);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
   position: relative;
+}
+.page-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(107.54deg, rgba(23, 26, 28, 0.72) 0%, #5E5E57 100%);
+  opacity: 0.15;
+}
+.page-section__wrapper {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
   padding: 74px 0 50px;
+}
+
+.title {
+  font-size: 44px;
+  line-height: 53px;
+  padding-left: 25px;
+  margin-bottom: 55px;
 }
 
 .scroll-btn {
@@ -535,5 +586,102 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 30px;
+  right: 0;
+  z-index: 5;
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 30px;
+  font-size: 15px;
+  line-height: 17px;
+}
+.header__btn {
+  color: #fff;
+  background-color: transparent;
+  padding: 6px 28px;
+  border: 1px solid #FFFFFF;
+  border-radius: 3px;
+  margin-right: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.header__btn:hover {
+  color: #000;
+  background: #fff;
+}
+.header__phone {
+  font-size: 16px;
+  line-height: 18px;
+}
+.header .logo {
+  opacity: 1;
+  transition: all 0.3s;
+}
+.header .logo:hover {
+  opacity: 50%;
+}
+
+.menu__list-item {
+  display: inline-block;
+  transition: all 0.3s;
+}
+.menu__list-item + .menu__list-item {
+  padding-left: 20px;
+}
+.menu__list-item:hover {
+  opacity: 50%;
+}
+
+.top {
+  background-image: url("../images/top-bg.jpg");
+}
+.top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(45.97% 54.43% at 50% 45.57%, rgba(23, 26, 28, 0) 50.28%, rgba(23, 26, 28, 0.00225974) 50.29%, rgba(4, 5, 5, 0.820343) 58.72%, rgba(5, 5, 6, 0.792703) 80.08%, #000000 87.89%);
+  opacity: 0.4;
+}
+.top__wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+.top__inner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.top__title {
+  font-size: 96px;
+  line-height: 115px;
+  margin-bottom: 25px;
+}
+.top__text {
+  margin: 25px 0 35px;
+  max-width: 325px;
+}
+.top__social-item {
+  display: inline-block;
+  margin: 0 25px;
+}
+.top__social-link {
+  opacity: 50%;
+  transition: all 0.3s;
+}
+.top__social-link:hover {
+  opacity: 100%;
 }
 /*# sourceMappingURL=style.css.map */
