@@ -714,4 +714,41 @@ body {
 .product__slider {
   max-width: 560px;
 }
+.product__slider::before {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 276px;
+  border: 4px solid #fff;
+  top: -15px;
+  right: -17px;
+}
+.product__title {
+  padding-top: 76px;
+}
+
+.slider-btn {
+  width: 60px;
+  height: 48px;
+  padding: 15px 25px;
+  border: none;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  z-index: 5;
+  cursor: pointer;
+  bottom: -42px;
+}
+.slider-btn svg {
+  stroke: #000;
+}
+.slider-btn__left {
+  right: 60px;
+}
+.slider-btn.slick-disabled {
+  background-color: #000;
+}
+.slider-btn.slick-disabled svg {
+  stroke: white;
+}
 /*# sourceMappingURL=style.css.map */
