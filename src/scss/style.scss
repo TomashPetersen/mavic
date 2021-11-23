@@ -175,4 +175,70 @@
   }
 }
 
+.benefits {
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 25px;
+  }
+  &__item {
+    margin-bottom: 100px;
+    display: flex;
+    align-items: flex-end;
+    &:nth-child(even) {
+      margin-left: 40px;
+    }
+  }
+  &__item-1 {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      height: 50px;
+      width: 245px;  
+      background-image: url('../images/line-1.svg');
+      right: -58px;
+      bottom: 69px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+  }
+  &__num {
+    font-size: 36px;
+    line-height: 41px;
+    @extend %ubuntu-bold;
+    margin-right: 7px;
+  }
+  &__img {
+    position: relative;
+    z-index: 1;
+    margin-right: 32px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 195px;
+      height: 138px;
+      border: 2px solid #fff;
+      left: 12px;
+      bottom: 12px;
+      z-index: -1;
+    }
+  }
+  &__info {
+    width: 300px;
+  }
+  &__info-title {
+    width: 123px;
+    font-size: 21px;
+    line-height: 24px;
+    @extend %ubuntu-bold;
+    margin-bottom: 10px;
+  }
+  &__info-text {
+    font-size: 15px;
+    line-height: 18px;
+    @extend %ubuntu-light;
+  }
+}
+
 @import "media";
