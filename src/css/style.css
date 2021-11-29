@@ -13,12 +13,17 @@
   font-weight: 300;
 }
 
+.contacts__form-input, .contacts__form-textarea {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+}
+
 .questions__item-title, .product__slider-text, .header__inner {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
 }
 
-.specification__box-title, .benefits__info-title, .benefits__num, .header__phone {
+.contacts__form-btn, .contacts__form-title, .contacts__info-title, .specification__box-title, .benefits__info-title, .benefits__num, .header__phone {
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
 }
@@ -758,7 +763,7 @@ body {
   padding-left: 25px;
 }
 .benefits__title {
-  padding-top: 70px;
+  padding-top: 50px;
   margin-bottom: 50px;
 }
 .benefits__item {
@@ -911,7 +916,7 @@ body {
 }
 
 .questions__title {
-  padding-top: 70px;
+  padding-top: 60px;
 }
 .questions__items {
   min-width: 757px;
@@ -922,6 +927,17 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   max-width: 690px;
   margin-bottom: 5px;
+  position: relative;
+}
+.questions__item:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 125px;
+  top: -30px;
+  right: -393px;
+  background-image: url("../images/questions-bg.png");
+  background-repeat: no-repeat;
 }
 .questions__item-title {
   font-size: 21px;
@@ -961,5 +977,109 @@ body {
   height: 100%;
   opacity: 1;
   padding: 0 5px 75px 50px;
+}
+
+.contacts__title {
+  padding-top: 70px;
+}
+.contacts__inner {
+  display: flex;
+}
+.contacts__info {
+  width: 240px;
+  margin-right: 60px;
+}
+.contacts__info-box {
+  margin-bottom: 30px;
+}
+.contacts__info-title {
+  font-size: 24px;
+  line-height: 21px;
+  margin: 0 0 13px;
+}
+.contacts__info-phone, .contacts__info-email {
+  font-size: 15px;
+  line-height: 19px;
+}
+.contacts__info-email:hover {
+  text-decoration: underline;
+}
+.contacts__form {
+  width: 570px;
+  margin-right: 106px;
+}
+.contacts__form-title {
+  font-size: 24px;
+  line-height: 21px;
+  margin: 0 0 13px;
+}
+.contacts__form-text {
+  font-size: 15px;
+  line-height: 19px;
+  margin: 0 0 12px;
+}
+.contacts__form-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.contacts__form-input, .contacts__form-textarea {
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  font-size: 13px;
+  line-height: 17px;
+  caret-color: #fff;
+  color: #fff;
+}
+.contacts__form-input::-moz-placeholder, .contacts__form-textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.contacts__form-input:-ms-input-placeholder, .contacts__form-textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.contacts__form-input::placeholder, .contacts__form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.contacts__form-input {
+  width: 49%;
+}
+.contacts__form-textarea {
+  min-height: 144px;
+  width: 100%;
+  resize: none;
+  margin-bottom: 17px;
+}
+.contacts__form-btn {
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.03em;
+  border-radius: 2px;
+  border: 2px solid #FFFFFF;
+  padding: 9px 15px;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+}
+.contacts__social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contacts__social-item {
+  margin: 14px 0;
+}
+.contacts .footer {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+}
+.contacts .footer__copy {
+  text-align: right;
+  font-size: 13px;
+  line-height: 17px;
+  color: rgba(255, 255, 255, 0.64);
 }
 /*# sourceMappingURL=style.css.map */

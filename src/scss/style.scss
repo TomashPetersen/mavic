@@ -182,7 +182,7 @@
     padding-left: 25px;
   }
   &__title {
-    padding-top: 70px;
+    padding-top: 50px;
     margin-bottom: 50px;
   }
   &__item {
@@ -351,7 +351,7 @@
 
 .questions {
   &__title {
-    padding-top: 70px;
+    padding-top: 60px;
   }
   &__items {
     min-width: 757px;
@@ -362,6 +362,17 @@
     background-color: rgba(0, 0, 0, 0.3);
     max-width: 690px;
     margin-bottom: 5px;
+    position: relative;
+    &:nth-child(3)::before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 125px;
+      top: -30px;
+      right: -393px;
+      background-image: url('../images/questions-bg.png');
+      background-repeat: no-repeat;
+    }
   }
   &__item-title {
     font-size: 21px;
@@ -371,7 +382,6 @@
     padding: 20px 10px 24px 40px;
     position: relative;
     cursor: pointer;
-
     &::after {
       content: url('../images/accordeon-arrow.svg');
       display: flex;
@@ -410,4 +420,113 @@
   }
 }
 
-@import "media";
+.contacts {
+  &__title {
+    padding-top: 70px;
+  }
+  &__inner {
+    display: flex;
+  }
+  &__info {
+    width: 240px;
+    margin-right: 60px;
+  }
+  &__info-box {
+    margin-bottom: 30px;
+  }
+  &__info-title {
+    font-size: 24px;
+    line-height: 21px;
+    @extend %ubuntu-bold;  
+    margin: 0 0 13px;
+  }
+  &__info-phone,
+  &__info-email {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  &__info-email:hover {
+    text-decoration: underline;;;
+  }
+  &__form {
+    width: 570px;
+    margin-right: 106px;
+  }
+  &__form-title {
+    font-size: 24px;
+    line-height: 21px;
+    @extend %ubuntu-bold; 
+    margin: 0 0 13px; 
+  }
+  &__form-text {
+    font-size: 15px;
+    line-height: 19px;
+    margin: 0 0 12px;
+  }
+  &__form-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  &__form-input,
+  &__form-textarea {
+    @extend %ubuntu-regular;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    font-size: 13px;
+    line-height: 17px;
+    caret-color: #fff;
+    color: #fff;
+    &::placeholder {
+      color: rgba(#fff, .4);
+    }
+  }
+  &__form-input {
+    
+    width: 49%;
+
+  }
+  &__form-textarea {
+    min-height: 144px;
+    width: 100%;
+    resize: none;
+    margin-bottom: 17px;
+  }
+  &__form-btn {
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.03em;
+    @extend %ubuntu-bold; 
+    border-radius: 2px;
+    border: 2px solid #FFFFFF;
+    padding: 9px 15px;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &__social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__social-item {
+    margin: 14px 0;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    &__copy {
+      text-align: right;
+      font-size: 13px;
+      line-height: 17px;
+      color: rgba(#fff, .64);
+    }
+  }
+}
+
+@import  "media";
