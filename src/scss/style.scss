@@ -3,6 +3,7 @@
 @import "fonts";
 @import "global";
 
+
 .header {
   position: fixed;
   left: 0;
@@ -525,8 +526,13 @@
       font-size: 13px;
       line-height: 17px;
       color: rgba(#fff, .64);
+      transition: ease 1s all;
+      cursor: pointer;
     }
   }
 }
 
+
+
+@import "animation";
 @import  "media";
