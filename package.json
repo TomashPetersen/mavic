@@ -44,5 +44,8 @@
     "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.20.1"
+  },
+  "dependencies": {
+    "fullpage.js": "^3.1.2"
   }
 }

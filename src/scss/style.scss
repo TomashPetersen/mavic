@@ -2,6 +2,7 @@
 @import "libs";
 @import "fonts";
 @import "global";
+@import "animation";
 
 
 .header {
@@ -56,13 +57,14 @@
       padding-left: 20px;
     }
     &:hover {
-      opacity: 50%;
+      opacity: .5;
     }
   }
 }
 
 .top {
   background-image: url('../images/top-bg.jpg');
+  position: relative;
   &::before {
     content: '';
     position: absolute;
@@ -94,15 +96,18 @@
     max-width: 325px;
   }
   &__social-item {
-   
     display: inline-block;
     margin: 0 25px;
   }
+  &__social-list {
+    margin-bottom: 20px;
+  }
   &__social-link {
-    opacity: 50%;
+    display: block;
+    opacity: .5;
     transition: all .3s;
     &:hover {
-      opacity: 100%;
+      opacity: 1;
     }
   }
 }
@@ -506,6 +511,11 @@
     color: #fff;
     background-color: transparent;
     cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      background-color: #fff;
+      color: black;
+    }
   }
   &__social {
     display: flex;
@@ -514,6 +524,13 @@
   }
   &__social-item {
     margin: 14px 0;
+  }
+  &__social-link {
+    opacity: .5;
+    transition: all .3s;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .footer {
@@ -534,5 +551,5 @@
 
 
 
-@import "animation";
+
 @import  "media";
