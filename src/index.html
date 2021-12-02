@@ -16,41 +16,43 @@
 <body>
   <header class="header">
     <div class="container">
-      <div class="header__inner">
-        <a class="logo" href="#">
-          <picture class="logo__img">
-            <source srcset="images/logo-mobile.png" media="(max-width: 640px)">
-            <img src="images/logo.png" alt="logo picture">
-          </picture>
-        </a>
+      <div id="header__nav" class="header__inner">
+        <div data-menuachor="top">
+          <a class="logo" href="#top">
+            <picture class="logo__img">
+              <source srcset="images/logo-mobile.png" media="(max-width: 640px)">
+              <img src="images/logo.png" alt="logo picture">
+            </picture>
+          </a>
+        </div>
 
         <nav class="menu">
           <button class="menu__btn">
             <span class="menu__btn-line"></span>
           </button>
           <ul class="menu__list">
-            <li class="menu__list-item">
-              <a class="menu__list-link" href="#">
+            <li class="menu__list-item" data-menuachor="product">
+              <a class="menu__list-link" href="#product">
                 О ДРОНЕ
               </a>
             </li>
-            <li class="menu__list-item">
-              <a class="menu__list-link" href="#">
+            <li class="menu__list-item" data-menuachor="benefits">
+              <a class="menu__list-link" href="#benefits">
                 ПРЕИМУЩЕСТВА
               </a>
             </li>
-            <li class="menu__list-item">
-              <a class="menu__list-link" href="#">
+            <li class="menu__list-item" data-menuachor="specification">
+              <a class="menu__list-link" href="#specification">
                 ХАРАКТЕРИСТИКИ
               </a>
             </li>
-            <li class="menu__list-item">
-              <a class="menu__list-link" href="#">
+            <li class="menu__list-item" data-menuachor="questions">
+              <a class="menu__list-link" href="#questions">
                 ВОПРОСЫ
               </a>
             </li>
-            <li class="menu__list-item">
-              <a class="menu__list-link" href="#">
+            <li class="menu__list-item" data-menuachor="contacts">
+              <a class="menu__list-link" href="#contacts">
                 КОНТАКТЫ
               </a>
             </li>
@@ -77,7 +79,7 @@
 
   <main id="fullpage">
 
-    <section class="page-section top">
+    <section data-anchor="top" class="page-section top">
       <div class="page-section__wrapper top__wrapper">
         <div class="container">
           <div class="top__inner">
@@ -120,7 +122,7 @@
       </div>
     </section>
     
-    <section id="product" class="page-section product">
+    <section data-anchor="product" class="page-section product">
       <div class="page-section__wrapper">
         <div class="container">
           <h3 class="title product__title">Что такое Mavic 2 Pro?</h3>
@@ -163,7 +165,7 @@
       </div>
     </section>
     
-    <section id="benefits" class="page-section benefits">
+    <section data-anchor="benefits" class="page-section benefits">
       <div class="page-section__wrapper">
         <div class="container">
           <h3 class="title benefits__title">Преимущества</h3>
@@ -249,7 +251,7 @@
       </div>
     </section>
     
-    <section id="specification" class="page-section specification">
+    <section data-anchor="specification" class="page-section specification">
       <div class="page-section__wrapper">
         <div class="container">
           <h3 class="title specification__title">Характеристики</h3>
@@ -300,7 +302,7 @@
       </div>
     </section>
     
-    <section id="questions" class="page-section questions">
+    <section data-anchor="questions" class="page-section questions">
       <div class="page-section__wrapper">
         <div class="container">
           <h3 class="title questions__title">
@@ -350,7 +352,7 @@
       </div>
     </section>
     
-    <section id="contacts" class="page-section contacts">
+    <section data-anchor="contacts" class="page-section contacts">
       <div class="page-section__wrapper">
         <div class="container">
           <h3 class="title contacts__title">Контакты</h3>
