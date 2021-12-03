@@ -89,3 +89,18 @@ body {
   right: 0;
   bottom: 0;
 }
+
+.btn {
+  outline: none;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+  &:hover {
+    color: #000;
+    background: #fff;
+  }
+}
