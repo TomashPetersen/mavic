@@ -594,6 +594,21 @@ body {
   bottom: 0;
 }
 
+.btn {
+  outline: none;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover {
+  color: #000;
+  background: #fff;
+}
+
 @-webkit-keyframes swing {
   15% {
     transform: translateX(9px);
@@ -657,19 +672,10 @@ body {
   line-height: 17px;
 }
 .header__btn {
-  color: #fff;
-  background-color: transparent;
+  min-width: 115px;
+  min-height: 30px;
   padding: 6px 28px;
-  border: 1px solid #FFFFFF;
-  border-radius: 3px;
   margin-right: 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.header__btn:hover {
-  color: #000;
-  background: #fff;
 }
 .header__phone {
   font-size: 16px;
@@ -1109,21 +1115,12 @@ body {
   margin-bottom: 17px;
 }
 .contacts__form-btn {
-  text-transform: uppercase;
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.03em;
-  border-radius: 2px;
-  border: 2px solid #FFFFFF;
   padding: 9px 15px;
-  color: #fff;
-  background-color: transparent;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.contacts__form-btn:hover {
-  background-color: #fff;
-  color: black;
+  width: 120px;
+  height: 34px;
 }
 .contacts__social {
   display: flex;

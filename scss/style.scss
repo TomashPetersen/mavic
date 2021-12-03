@@ -21,19 +21,10 @@
     @extend %ubuntu-medium;
   }
   &__btn {
-    color: #fff;
-    background-color: transparent;
+    min-width: 115px;
+    min-height: 30px;
     padding: 6px 28px;
-    border: 1px solid #FFFFFF;
-    border-radius: 3px;
     margin-right: 8px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .3s;
-    &:hover {
-      color: #000;
-      background: #fff;
-    }
   }
   &__phone {
     font-size: 16px;
@@ -506,22 +497,13 @@
     margin-bottom: 17px;
   }
   &__form-btn {
-    text-transform: uppercase;
     font-size: 14px;
     line-height: 16px;
     letter-spacing: 0.03em;
-    @extend %ubuntu-bold; 
-    border-radius: 2px;
-    border: 2px solid #FFFFFF;
+    @extend %ubuntu-bold;
     padding: 9px 15px;
-    color: #fff;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all .3s;
-    &:hover {
-      background-color: #fff;
-      color: black;
-    }
+    width: 120px;
+    height: 34px;
   }
   &__social {
     display: flex;
