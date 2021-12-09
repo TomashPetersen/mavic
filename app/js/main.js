@@ -16,8 +16,8 @@ $(function () {
     scrollHorizontally: true,
     sectionSelector: '.page-section',
     scrollOverflow: true,
-    menu: '#header__nav',
-    anchors: ['top', 'product', 'benefits', 'specification', 'questions', 'contacts']
+    anchors: ['top', 'product', 'benefits', 'specification', 'questions', 'contacts'],
+    menu: '#myMenu'
   });
 });
 //# sourceMappingURL=main.js.map
