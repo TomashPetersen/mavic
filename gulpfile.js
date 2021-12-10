@@ -1,181 +1,155 @@
-const { src, dest, series, watch } = require('gulp');
-const autoprefixer = require('gulp-autoprefixer');
-const babel = require('gulp-babel');
-const cleanCSS = require('gulp-clean-css');
-const uglify = require('gulp-uglify-es').default;
-const del = require('del');
-const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass')(require('sass'));
-const svgSprite = require('gulp-svg-sprite');
-const fileInclude = require('gulp-file-include');
-const sourcemaps = require('gulp-sourcemaps');
-const rev = require('gulp-rev');
-const revRewrite = require('gulp-rev-rewrite');
-const revDel = require('gulp-rev-delete-original');
-const htmlmin = require('gulp-htmlmin');
-const gulpif = require('gulp-if');
-const notify = require('gulp-notify');
-const image = require('gulp-image');
-const { readFileSync } = require('fs');
-const concat = require('gulp-concat');
+const { src, dest, watch, parallel, series} = require('gulp');
 
-let isProd = false; // dev by default
+const csslibs = ['node_modules/slick-slider/slick/slick.css', 'node_modules/fullpage.js/dist/fullpage.css']; 
 
-const clean = () => {
-  return del(['app/*'])
-}
+const scss             = require('gulp-sass')(require('sass'));
+const concat           = require('gulp-concat');
+const browserSync      = require('browser-sync').create();
+const uglify           = require('gulp-uglify-es').default;
+const autoprefixer     = require('gulp-autoprefixer');
+const imagemin         = require('gulp-imagemin');
+const del              = require('del');
+const clean            = require('gulp-clean-css');
+const bulk             = require('gulp-sass-bulk-importer');
+const map              = require('gulp-sourcemaps');
+const chalk            = require('chalk');
+const ttfToWoff2       = require('gulp-ttf2woff2');
+const ttfToWoff        = require('gulp-ttf2woff');
+const changed          = require('gulp-changed');
 
-//svg sprite
-const svgSprites = () => {
-  return src('./src/images/svg/**.svg')
-    .pipe(svgSprite({
-      mode: {
-        stack: {
-          sprite: "../sprite.svg" //sprite file name
-        }
-      },
-    }))
-    .pipe(dest('./app/images'));
-}
-
-const styles = () => {
-  return src('./src/scss/**/*.scss')
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(sass().on("error", notify.onError()))
+function styles () {
+  return src('app/scss/style.scss')
+    .pipe(map.init())
+    .pipe(bulk())
+    .pipe(scss({ outputStyle: 'compressed' }).on('error', scss.logError))
     .pipe(autoprefixer({
-      cascade: false,
+      overrideBrowserslist: ['last 10 version'],
+      browsers: [
+        'Android >= 4',
+        'Chrome >= 20',
+        'Firefox >= 24',
+        'Explorer >= 11',
+        'iOS >= 6',
+        'Opera >= 12',
+        'Safari >= 6',
+      ],
+      grid: true
     }))
-    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
-    .pipe(gulpif(!isProd, sourcemaps.write('.')))
-    .pipe(dest('./app/css/'))
-    .pipe(dest('./src/css/'))
-    .pipe(browserSync.stream());
-};
-
-const stylesBackend = () => {
-  return src('./src/scss/**/*.scss')
-    .pipe(sass().on("error", notify.onError()))
-    .pipe(autoprefixer({
-      cascade: false,
+    .pipe(clean({
+      level: 2
     }))
-    .pipe(dest('./app/css/'))
-};
-
-const scripts = () => {
-  src('./src/js/vendor/**.js')
-    .pipe(concat('vendor.js'))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(dest('./app/js/'))
-  return src(
-    ['./src/js/global.js', './src/js/components/**.js', './src/js/main.js'])
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(babel({
-      presets: ['@babel/env']
-    }))
-    .pipe(concat('main.js'))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(gulpif(!isProd, sourcemaps.write('.')))
-    .pipe(dest('./app/js'))
+    .pipe(concat('style.min.css'))
+    .pipe(map.write('../sourcemaps/'))
+    .pipe(dest('app/css'))
     .pipe(browserSync.stream());
 }
 
-const scriptsBackend = () => {
-  src('./src/js/vendor/**.js')
-    .pipe(concat('vendor.js'))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(dest('./app/js/'))
-  return src(['./src/js/functions/**.js', './src/js/components/**.js', './src/js/main.js'])
-    .pipe(dest('./app/js'))
-};
+function ttf (done) {
+  src('app/fonts/**/*.ttf')
+    .pipe(changed('app/fonts', {
+      extension: '.woff2',
+      hasChanged: changed.compareLastModifiedTime
+    }))
+    .pipe(ttfToWoff2())
+    .pipe(dest('app/fonts'))
 
-const resources = () => {
-  return src('./src/resources/**')
-    .pipe(dest('./app'))
+  src('app/fonts/**/*.ttf')
+    .pipe(changed('app/fonts', {
+      extension: 'woff',
+      hasChanged: changed.compareLastModifiedTime
+    }))
+    .pipe(ttfToWoff())
+    .pipe(dest('app/fonts'))
+  done();
 }
 
-const images = () => {
+function libs_style (done) {
+  if (csslibs.length > 0) {
+    return src(csslibs)
+      .pipe(map.init())
+      .pipe(scss({
+        outputStyle: 'compressed'
+      }).on('error', scss.logError))
+      .pipe(clean({
+        level: 2
+      }))
+      .pipe(concat('libs.min.css'))
+      .pipe(map.write('../sourcemaps/'))
+      .pipe(dest('app/css/'))
+  } else {
+    return done(console.log(chalk.black.bgYellow('Don\'t worry, but no added CSS/SCSS libraries')));
+  }
+}
+
+function cleanDist () {
+  return del('dist');
+}
+
+function images () {
+  return src('app/images/**/*')
+    .pipe(imagemin([
+      imagemin.gifsicle({ interlaced: true }),
+      imagemin.mozjpeg({ quality: 75, progressive: true }),
+      imagemin.optipng({ optimizationLevel: 5 }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: true },
+          { cleanupIDs: false }
+        ]
+      })
+    ]))
+    .pipe(dest('build/images'));
+}
+
+function build () {
   return src([
-    './src/images/**.jpg',
-    './src/images/**.png',
-    './src/images/**.jpeg',
-    './src/images/*.svg',
-    './src/images/**/*.jpg',
-    './src/images/**/*.png',
-    './src/images/**/*.jpeg'
-  ])
-    .pipe(gulpif(isProd, image()))
-    .pipe(dest('./app/images'))
-};
-
-const htmlInclude = () => {
-  return src(['./src/*.html'])
-    .pipe(fileInclude({
-      prefix: '@',
-      basepath: '@file'
-    }))
-    .pipe(dest('./app'))
-    .pipe(browserSync.stream());
+      'app/css/*.min.css',
+      'app/fonts/**/*',
+      'app/js/main.min.js',
+      'app/*.html',
+      'app/sourcemaps/*',
+      'app/images/**/*'
+    ], {base: 'app'})
+    .pipe(dest('dist'));
 }
 
-const watchFiles = () => {
+function watching () {
+  watch(['app/scss/**/*.scss'], styles());
+  watch(['app/js/**/*.js', '!app/js/**/main.min.js'], scripts);
+  watch(['app/*.html']).on('change', browserSync.reload);
+}
+
+function browsersync () {
   browserSync.init({
     server: {
-      baseDir: "./app"
-    },
+      baseDir: 'app/'
+    }
   });
-
-  watch('./src/scss/**/*.scss', styles);
-  watch('./src/js/**/*.js', scripts);
-  watch('./src/partials/*.html', htmlInclude);
-  watch('./src/*.html', htmlInclude);
-  watch('./src/resources/**', resources);
-  watch('./src/images/*.{jpg,jpeg,png,svg}', images);
-  watch('./src/images/**/*.{jpg,jpeg,png}', images);
-  watch('./src/images/svg/**.svg', svgSprites);
 }
 
-const cache = () => {
-  return src('app/**/*.{css,js,svg,png,jpg,jpeg,woff2}', {
-    base: 'app'
-  })
-    .pipe(rev())
-    .pipe(revDel())
-    .pipe(dest('app'))
-    .pipe(rev.manifest('rev.json'))
-    .pipe(dest('app'));
-};
+function scripts () {
+  return src([
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/slick-slider/slick/slick.js',
+    'node_modules/fullpage.js/dist/fullpage.js',
+    'node_modules/fullpage.js/vendors/scrolloverflow.js',
+    'app/js/main.js'
+    ])
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    .pipe(dest('app/js'))
+    .pipe(browserSync.stream());
 
-const rewrite = () => {
-  const manifest = readFileSync('app/rev.json');
-  src('app/css/*.css')
-    .pipe(revRewrite({
-      manifest
-    }))
-    .pipe(dest('app/css'));
-  return src('app/**/*.html')
-    .pipe(revRewrite({
-      manifest
-    }))
-    .pipe(dest('app'));
 }
 
-const htmlMinify = () => {
-  return src('app/**/*.html')
-    .pipe(htmlmin({
-      collapseWhitespace: true
-    }))
-    .pipe(dest('app'));
-}
+exports.styles = styles;
+exports.watching = watching;
+exports.browsersync = browsersync;
+exports.scripts = scripts;
+exports.images = images;
+exports.cleanDist = cleanDist;
+exports.libs_style = libs_style;
+exports.ttf = ttf;
 
-const toProd = (done) => {
-  isProd = true;
-  done();
-};
-
-exports.default = series(clean, htmlInclude, scripts, styles, resources, images, svgSprites, watchFiles);
-
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, svgSprites, htmlMinify);
-
-exports.cache = series(cache, rewrite);
-
-exports.backend = series(toProd, clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, svgSprites);
+exports.build = series(cleanDist, images, build);
+exports.default = parallel(styles, libs_style, scripts, browsersync, watching);
