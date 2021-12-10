@@ -1,9 +1,7 @@
-@import "vars";
-@import "libs";
-@import "fonts";
-@import "global";
-@import "animation";
-
+@import 'base/*.scss';
+@import 'global/*.scss';
+@import '../components/**/*.scss';
+@import '**/_*.scss';
 
 .header {
   position: fixed;
@@ -537,7 +535,4 @@
   }
 }
 
-
-
-
-@import  "media";
+@import  'media';
